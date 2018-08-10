@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_17_30_070866) do
+ActiveRecord::Schema.define(version: 2018_17_30_070870) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "account_number"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_17_30_070866) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "books_count"
   end
 
   create_table "bests_tests", id: false, force: :cascade do |t|
@@ -93,6 +94,18 @@ ActiveRecord::Schema.define(version: 2018_17_30_070866) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jaspreets", force: :cascade do |t|
+    t.integer "jasp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jasp_id"], name: "index_jaspreets_on_jasp_id"
+  end
+
+  create_table "jasps", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -182,6 +195,14 @@ ActiveRecord::Schema.define(version: 2018_17_30_070866) do
     t.string "login"
     t.string "email"
     t.string "location"
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string "type"
+    t.string "color"
+    t.decimal "price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "workers", force: :cascade do |t|

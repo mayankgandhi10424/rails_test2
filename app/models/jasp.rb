@@ -1,0 +1,2 @@
+class Jasp < ApplicationRecord
+end
