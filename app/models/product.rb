@@ -39,13 +39,13 @@ class Product < ApplicationRecord
   # validates :price, absence: true
 
   # validates :test_int, uniqueness: true
-  validates :test_int, uniqueness: { scope: :price, message: "test and price combination must be unique" }
+  validates :test_int, uniqueness: { scope: :price, message: "test and price combination must be unique" }, on: :create
   # validates :test_int, uniqueness: true, on: :account_setup
   
   # validates_with CustomValidator
   # validates_with CustomValidator, fields: [:test_int]
   
-  validates :name, presence: true, emailq: true
+  # validates :name, presence: true, emailq: true
 
   validate :test?
 
@@ -58,7 +58,7 @@ class Product < ApplicationRecord
   # end
 
   def test?
-    errors.add(:name, "can't be in the past", not_allowed: "!@#%*()_-+=")
+    # errors.add(:name, "can't be in the past", not_allowed: "!@#%*()_-+=")
     true
   end
 end
