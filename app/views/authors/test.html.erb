@@ -1,0 +1,97 @@
+<% if false #start of comment %>
+  <p><%= text_field(:author, :name) %></p>
+
+  <%= form_for @author, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_area :books_count %>
+    <%= f.submit "Create" %>
+  <% end %>
+
+  <%= form_for @author, url: {action: "create"} do |person_form| %>
+    <%= person_form.text_field :name %>
+    <%= fields_for @author.books do |contact_detail_form| %>
+      <%= contact_detail_form.text_field :methods %>
+    <% end %>
+  <% end %>
+
+
+  <% form_tag(author_path(@author), method: "patch") %>
+  <%= select_tag(:city_id, options_for_select([['Lisbon', 1], ['Madrid', 2], ['indore', 3]], 3)) %>
+
+  <%= select_tag(:city_id, options_for_select([
+    ['Lisbon', 1, { 'data-size' => '2.8 million' }],
+    ['Madrid', 2, { 'data-size' => '3.2 million' }],
+    ['indore', 3, { 'data-size' => '2.5 million' }]
+  ], 2)) %>
+<% author_book_path(@book) %>
+
+  <%= form_for @author,  html: {class: "nifty_form"} do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_area :books_count %>
+    <%= f.submit "Create" %>
+  <% end %>
+
+  <%=form_for [@book.author, @book] do |f| %>
+    <% f %>
+  <% end %>
+
+  <%= form_for @author do |f| %>
+    <%= f.object.name %>
+  <% end %>
+
+  <%= form_for [@author, @book] do |f| %>
+  <% end %>
+
+  <%= form_for @author do |author| %>
+    <%= author.text_field :name %>
+    <% @author.books.each do |book| %>
+      <%= author.fields_for book, index: book.id do |book_form|%>
+        <%= book_form.text_field :author_id %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= form_for @author do |author| %>
+    <%= author.text_field :name %>
+    <% @author.books.each do |book| %>
+      <%= fields_for 'author[book]', book, index: book.id do |book_form| %>
+        <%= book_form.text_field :author_id %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= form_for @author do |f| %>
+    Books:
+    <ul>
+      <%= f.fields_for :books do |books_form| %>
+        <li>
+          <%= books_form.label :id %>
+          <%= books_form.text_field :id %>
+
+          <%= books_form.label :author_id %>
+          <%= books_form.text_field :author_id %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end #end of comment %>
+
+  <%= form_for @author do |f| %>
+    Author: <%= f.label f.object.name %> <br/>
+    Books:
+    <ul>
+      <%= f.fields_for :books do |books_form| %>
+        <li>
+          <%= books_form.label :id %>
+          <%= books_form.text_field :id %>
+
+          <%= books_form.label :author_id %>
+          <%= books_form.text_field :author_id %>
+
+          <%= books_form.check_box :_destroy%>
+        </li>
+      <% end %>
+    </ul>
+    <%= f.submit %>
+  <% end %>
+

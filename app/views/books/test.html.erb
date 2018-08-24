@@ -1,0 +1,9 @@
+<% if false %>
+  <p><%= text_field(:author, :name) %></p>
+<% end %>
+
+<%= form_for @author, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_area :books_count %>
+  <%= f.submit "Create" %>
+<% end %>

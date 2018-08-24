@@ -1,0 +1,43 @@
+<% if false #strat of comment %>
+  <%= select(:person, :city_id, [['Lisbon', 1], ['Madrid', 2], ['Indore', 3], ['Bhopal', 4]]) %>
+
+  <%= form_for @person do |f| %>
+    <%= f.select(:city_id) do %>
+      <% [['Lisbon', 1], ['Madrid', 2]].each do |c| -%>
+        <%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= select(:person, :city_id, options_from_collection_for_select(City.all, :id, :name) ) %>
+  
+  <%= collection_select(:person, :city_id, City.all, :id, :name) %>
+
+  <%= form_for @person do |f| %>
+    <%= f.collection_select(:city_id, City.all, :id, :name) %>
+  <% end %>
+  
+  <%= time_zone_select(:person, :timezone) %>
+
+  <%= select_date Date.today, prefix: :start_date %>
+  <%= select_date Date.today, prefix: :end_date %>
+
+  <%= date_select :person, :timezone %>
+
+  <%= select_year(2009) %>
+  <%= select_year(Time.now) %>
+
+  <%= form_tag({action: :upload}, multipart: true) do %>
+    <%= file_field_tag 'picture' %>
+  <% end %>
+ 
+  <%= form_for @person do |f| %>
+    <%= f.file_field :picture %>
+  <% end %>
+
+  <%= form_for @person, builder: LabellingFormBuilder do |f| %>
+    <%= f.text_field :name %>
+  <% end %>
+  <input id="person_name" name="person[name]" type="text" value="Henry"/>
+<% end #end of comment %>
+

@@ -14,7 +14,9 @@ class UserCallbacks
   
   def self.around_save(user)
     # binding.pry
-    puts "around save"
+    puts "before around save"
+    yield
+    puts "after around save"
   end
   
   def self.before_create(user)
@@ -46,30 +48,30 @@ class User < ApplicationRecord
 
   # before_save UserCallbacks
 
-  # # around_save UserCallbacks
+  # around_save UserCallbacks
 
   # before_create UserCallbacks
 
   # around_create UserCallbacks
 
-  after_create UserCallbacks
+  # after_create UserCallbacks
 
-  after_save UserCallbacks
+  # after_save UserCallbacks
 
-  after_commit UserCallbacks
+  # after_commit UserCallbacks
 
-  after_validation UserCallbacks
+  # after_validation UserCallbacks
 
-  before_validation UserCallbacks
+  # before_validation UserCallbacks
 
   # before_validation :ensure_login
 
-  before_validation do 
-    # binding.pry
-    self.name = login.capitalize if (name.blank? and login.present?)
-  end
+  # before_validation do 
+  #   # binding.pry
+  #   self.name = login.capitalize if (name.blank? and login.present?)
+  # end
 
-  before_validation :normalize_name, on: :create
+  # before_validation :normalize_name, on: :create
 
   private
     def ensure_login

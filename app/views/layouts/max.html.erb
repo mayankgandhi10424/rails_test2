@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= yield :head %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>        
+    <%= yield %>
+    
+    <% if false %>
+      <b>mayank is awesome</b>
+      <%= javascript_include_tag "script" %> 
+      <%= javascript_include_tag "script", "test_script_1" %> 
+      <%= javascript_include_tag "test_script_1" %> 
+      <%= stylesheet_link_tag "books" %> 
+      <%= yield :content %>    
+      <b>end</b>
+    <% end %>
+
+  </body>
+</html>

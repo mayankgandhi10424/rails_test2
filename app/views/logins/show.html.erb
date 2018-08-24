@@ -1,0 +1,14 @@
+<p> name: <%= @user.name %> </p>
+
+<p>
+<% unless @user.name == 'logout'  %>
+  <%= link_to 'Logout', login_path(@user), method: :delete %>
+<% else %>
+  <%= link_to 'Login', new_login_path %>
+<% end %>
+</p>
+<p><%= link_to 'Home', logins_path %></p>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>

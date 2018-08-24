@@ -1,0 +1,8 @@
+<h2><%= author.name %></h2>
+ 
+<% if local_assigns[:full] %>
+  <%= simple_format author.books_count %>
+<% else %>
+
+  <%= author.books_count %>
+<% end %>

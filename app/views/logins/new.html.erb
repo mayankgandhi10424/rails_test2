@@ -1,0 +1,17 @@
+<% if false #start of comment %>
+<% end #end of comment %>
+  <%= form_for @user, url: {action: "create"}, method: "post" do |f|%>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.submit %>
+  <% end %>
+
+<p><%= link_to 'Home', logins_path %></p>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>

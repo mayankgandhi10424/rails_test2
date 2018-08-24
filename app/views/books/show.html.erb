@@ -1,0 +1,8 @@
+<% if false %>
+  <p>Show down</p>
+  <%= render partial: "link_area", layout: "max" %>
+<% end %>
+
+<p><%= @book.author_id %></p>
+<p><%= link_to "Edit", edit_book_path(@book) %></p>
+<p><%= link_to "Destroy", @book, method: :delete, data: { confirm: "Are you sure?" } %></p>
