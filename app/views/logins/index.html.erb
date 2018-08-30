@@ -8,3 +8,6 @@
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
 <% end -%>
+
+<p><%= link_to 'home', homepage_url %></p>
+<p><%= link_to 'main', main_url %></p>

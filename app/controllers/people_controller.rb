@@ -10,6 +10,10 @@ class PeopleController < ApplicationController
       file.write(uploaded_io.read)
     end
   end
+
+  def show 
+    print "name:", Person.find_by(name: params[:id])
+  end
 end
 
 class LabellingFormBuilder < ActionView::Helpers::FormBuilder

@@ -35,9 +35,9 @@
     <%= f.file_field :picture %>
   <% end %>
 
+  <input id="person_name" name="person[name]" type="text" value="Henry"/>
+<% end #end of comment %>
   <%= form_for @person, builder: LabellingFormBuilder do |f| %>
     <%= f.text_field :name %>
   <% end %>
-  <input id="person_name" name="person[name]" type="text" value="Henry"/>
-<% end #end of comment %>
 
